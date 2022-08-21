@@ -1093,6 +1093,7 @@ VALUES
         
         1. Tem alguns Clientes que são dependentes. Quero que vocês me digam de que clientes eles são dependentes.
 ○ Por exemplo “Filho A” é dependente de qual outro cliente?
+----------------------------------------------------------------------------------------------------------------------------
 
 select conta.numero as conta,cliente_pai ,nome as cliente_dependente
 from cliente
@@ -1106,9 +1107,13 @@ join conta on conta.id=cliente_conta.id_conta
 where dependente=true
 order by conta;
 
+
+-----------------------------------------------------------------------------------------------------------------------------------
 Quais foram as 5 contas que:
 ○ Mais fizeram transações
 ○ Menos fizeram transações
+
+------------------------------------------------------------------------------------------------------------------------------------
 
 SELECT
 	cliente_conta.id_conta, conta.numero as "numero de conta",
@@ -1134,12 +1139,15 @@ GROUP BY conta.id
 ORDER BY Quantidade_de_trasacao asc
 Limit 5;
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Tivemos uma perda de dados e não sabemos qual é o saldo de cada conta, mas temos todas as transações
 efetuadas.
 ○ Queremos saber qual saldo total das contas registradas em banco!
 ■ Reparem que temos alguns tipos de transações que subtraem dinheiro e outros que
 somam.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 select conta.numero as conta,depositos.total_depositos, debitos.total_debitos, (depositos.total_depositos-debitos.total_debitos) as saldo
 from conta
